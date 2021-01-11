@@ -1,0 +1,62 @@
+---
+layout: default
+title: Home
+---
+
+<header class="logo">
+    <div class="home-header-container">
+        <div class="help-lang">
+            <a href="http://www.braspag.com.br/fale-conosco/" class="help">{% t global.support %}</a>
+        <div class="lang">
+            <span>{% t global.languages %}</span>
+
+           {% for lang in site.language_names %}
+                {% if lang[0] == site.default_lang %}
+                <a href="{{ site.baseurl_root }}{{page.url}}">
+                {% else %}
+                <a href="{{ site.baseurl_root }}/{{ lang[0] }}{{page.url}}">
+                {% endif %}
+
+                   <img alt="{{ lang[1] }}" src="{{ site.baseurl }}/assets/images/{{ lang[0] }}.png"/>
+                </a>
+            {% endfor %}
+        </div>
+        </div>
+        <a href="{{ site.baseurl }}">
+            <img src="{{ site.baseurl }}/assets/images/logo.png" alt="{{ site.title }}">
+        </a>
+    </div>
+</header>
+
+{% assign sorted = site.tags | sort %}
+
+<div class="dev-hub-title">
+    <div class="dev-hub-info">
+        <h2>{% t global.hub_title %}</h2>
+        <p>{% t global.hub_description %}</p>
+    </div>
+</div>
+
+<div class="post-list home">
+    <ul class="product-list">
+    {% for tag in sorted %}
+        <li class="product">
+            <h2>{{tag[0]}}</h2>
+            {% assign pages_list = tag[1] | sort: 'title' | sort: 'sort_order' %}
+
+            <ul class="doc">
+            {% for post in pages_list %}
+                <li class="doc-title">
+                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+<div class="home-footer">
+    {% include footer.html %}
+</div>

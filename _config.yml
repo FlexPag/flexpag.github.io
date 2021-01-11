@@ -1,1 +1,20 @@
-theme: jekyll-theme-cayman
+# Setup
+title:        Braspag Developers - Manuais
+tagline:      Documentações de Integração
+permalink:    /:categories/:slug
+baseurl:      ""
+author:
+  name:       Aasita Muralikrishna
+  email:      aasita.muralikrishna@braspag.com.br
+  url:        https://www.braspag.com.br//
+github:
+  repo:       https://github.com/Braspag
+plugins:
+  - jekyll-multiple-languages-plugin
+exclude:      ["vendor", "Gemfile*", "script"]
+markdown:     kramdown
+languages:    ["pt", "en"]
+default_lang: "pt"
+language_names:
+  pt: Português
+  en: English
